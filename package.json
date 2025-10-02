@@ -17,21 +17,26 @@
     "db:migrate": "cd server && npm run db:migrate",
     "db:seed": "cd server && npm run db:seed",
     "install:all": "npm install && cd server && npm install && cd ../web && npm install",
-    "crawl": "tsx --tsconfig tsconfig.crawl.json scripts/crawl-and-ingest.ts"
+    "crawl": "tsx --tsconfig tsconfig.crawl.json scripts/crawl-and-ingest.ts",
+    "seed:sources": "tsx --tsconfig tsconfig.crawl.json scripts/seed-sources.ts",
+    "seed:areas": "tsx --tsconfig tsconfig.crawl.json scripts/seed-areas.ts"
   },
   "dependencies": {
     "@fastify/aws-lambda": "^6.1.1",
     "@fastify/cors": "^9.0.1",
     "@supabase/supabase-js": "^2.58.0",
+    "cheerio": "^1.0.0-rc.12",
     "dotenv": "^17.2.3",
     "fastify": "^4.26.1",
     "node-fetch": "^3.3.2",
+    "papaparse": "^5.4.1",
     "pg": "^8.11.3",
     "serverless-http": "^4.0.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
+    "@types/papaparse": "^5.3.14",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3"
   }

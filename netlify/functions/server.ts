@@ -241,6 +241,85 @@ async function buildApp() {
     reply.status(204).send();
   });
 
+  app.post('/api/ingest/sources', async (request, reply) => {
+    try {
+      const hdr = String((request.headers['x-admin-token'] ?? '')).trim();
+      if (!hdr || hdr !== process.env.ADMIN_TOKEN) {
+        return reply.code(401).send({ error: 'unauthorized' });
+      }
+
+      const bodySchema = z.object({
+        name: z.string(),
+        slug: z.string(),
+        url: z.string().url(),
+        type: z.string(),
+        county: z.string(),
+        town: z.string(),
+        active: z.boolean(),
+      });
+
+      const body = bodySchema.parse(request.body);
+
+      const { data, error } = await supabaseAdmin
+        .from('sources')
+        .upsert(
+          {
+            county: body.county,
+            town: body.town,
+            url: body.url,
+            enabled: body.active,
+          },
+          { onConflict: 'county,town' }
+        )
+        .select()
+        .single();
+
+      if (error) {
+        return reply.code(500).send({ error: error.message });
+      }
+
+      return reply.send(data);
+    } catch (e: any) {
+      return reply.code(500).send({ error: e.message ?? 'server error' });
+    }
+  });
+
+  app.post('/api/ingest/areas', async (request, reply) => {
+    try {
+      const hdr = String((request.headers['x-admin-token'] ?? '')).trim();
+      if (!hdr || hdr !== process.env.ADMIN_TOKEN) {
+        return reply.code(401).send({ error: 'unauthorized' });
+      }
+
+      const bodySchema = z.object({
+        county: z.string(),
+        town: z.string(),
+      });
+
+      const body = bodySchema.parse(request.body);
+
+      const { data, error } = await supabaseAdmin
+        .from('areas')
+        .upsert(
+          {
+            county: body.county,
+            town: body.town,
+          },
+          { onConflict: 'county,town' }
+        )
+        .select()
+        .single();
+
+      if (error) {
+        return reply.code(500).send({ error: error.message });
+      }
+
+      return reply.send(data);
+    } catch (e: any) {
+      return reply.code(500).send({ error: e.message ?? 'server error' });
+    }
+  });
+
   app.post('/api/ingest/firecrawl', async (request, reply) => {
     try {
       const hdr = String((request.headers['x-admin-token'] ?? '')).trim();
