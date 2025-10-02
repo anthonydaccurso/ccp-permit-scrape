@@ -217,7 +217,7 @@ Automated daily crawling using FireCrawl + GitHub Actions to fetch permit data f
    In your GitHub repository, navigate to Settings → Secrets and Variables → Actions, and add the following secrets:
 
    - `APP_BASE_URL` - Your production app URL (e.g., `https://leads.custompoolpros.com`)
-   - `ADMIN_TOKEN` - Your admin token (same as in your `.env` file)
+   - `ADMIN_TOKEN_NEW` - Your admin token (same as in your `.env` file)
    - `FIRECRAWL_API_KEY` - Your FireCrawl API key (get from https://firecrawl.dev)
 
 3. **Schedule Configuration**
