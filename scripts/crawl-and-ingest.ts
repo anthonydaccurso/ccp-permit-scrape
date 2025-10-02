@@ -117,7 +117,7 @@ async function postLeads(base: string, leads: any[]) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-admin-token': process.env.ADMIN_TOKEN!,
+      'x-admin-token': process.env.ADMIN_TOKEN_NEW!,
     },
     body: JSON.stringify(leads),
   });
