@@ -19,7 +19,7 @@ const PERMIT_PATHS = [
 ];
 
 const APP_BASE_URL = process.env.APP_BASE_URL!;
-const ADMIN_TOKEN = process.env.ADMIN_TOKEN!;
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN_NEW!;
 
 type Municipality = {
   county: string;
