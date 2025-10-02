@@ -323,7 +323,7 @@ async function buildApp() {
   app.post('/api/ingest/firecrawl', async (request, reply) => {
     try {
       const hdr = String((request.headers['x-admin-token'] ?? '')).trim();
-      if (!hdr || hdr !== process.env.ADMIN_TOKEN) {
+      if (!hdr || hdr !== process.env.ADMIN_TOKEN_NEW) {
         return reply.code(401).send({ error: 'unauthorized' });
       }
 
