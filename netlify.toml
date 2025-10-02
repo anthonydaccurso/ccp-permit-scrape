@@ -5,14 +5,29 @@
 
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["fastify", "@fastify/cors", "@supabase/supabase-js", "pg", "zod", "serverless-http"]
+  external_node_modules = [
+    "fastify",
+    "@fastify/cors",
+    "@supabase/supabase-js",
+    "pg",
+    "zod",
+    "serverless-http"
+  ]
   included_files = ["server/dist/**"]
 
+# New: specific route for your dispatch-all function
+[[redirects]]
+  from = "/api/gh-dispatch-all"
+  to = "/.netlify/functions/gh-dispatch-all"
+  status = 200
+
+# Existing: everything else under /api/* goes to Fastify server
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/server"
   status = 200
 
+# Fallback: SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
