@@ -1,0 +1,22 @@
+name: Seed Sources
+
+on:
+  workflow_dispatch:   # lets you trigger it manually in GitHub UI
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run seed:sources
+        env:
+          APP_BASE_URL: ${{ secrets.APP_BASE_URL }}
+          ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
+        run: npm run seed:sources
