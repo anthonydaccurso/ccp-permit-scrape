@@ -15,20 +15,20 @@
   ]
   included_files = ["server/dist/**"]
 
-# New: specific route for your dispatch-all function
+# Specific function route (match your file name!)
 [[redirects]]
-  from = "/api/gh-dispatch-all"
-  to = "/.netlify/functions/gh-dispatch-all"
+  from = "/api/gh-dispatch"
+  to   = "/.netlify/functions/gh-dispatch"
   status = 200
 
-# Existing: everything else under /api/* goes to Fastify server
+# Everything else under /api goes to your Fastify server
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/server"
+  to   = "/.netlify/functions/server"
   status = 200
 
-# Fallback: SPA routing
+# SPA fallback
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to   = "/index.html"
   status = 200
