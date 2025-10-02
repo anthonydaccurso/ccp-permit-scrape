@@ -203,7 +203,7 @@ async function upsertSource(source: {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-admin-token': ADMIN_TOKEN,
+        'x-admin-token': ADMIN_TOKEN_NEW,
       },
       body: JSON.stringify(source),
     });
