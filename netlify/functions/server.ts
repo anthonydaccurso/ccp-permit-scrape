@@ -7,7 +7,10 @@ import { z } from 'zod';
 
 const supabaseUrl = process.env.VITE_SUPABASE_URL!;
 const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY!;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY!;
+
+const supabase = createClient(supabaseUrl, supabaseKey, { auth: { persistSession: false } });
+const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, { auth: { persistSession: false } });
 
 let cachedHandler: any;
 
@@ -239,26 +242,53 @@ async function buildApp() {
   });
 
   app.post('/api/ingest/firecrawl', async (request, reply) => {
-    const bodySchema = z.object({
-      leads: z.array(z.any()),
-    });
+    try {
+      const hdr = String((request.headers['x-admin-token'] ?? '')).trim();
+      if (!hdr || hdr !== process.env.ADMIN_TOKEN) {
+        return reply.code(401).send({ error: 'unauthorized' });
+      }
 
-    const body = bodySchema.parse(request.body);
+      const rows = Array.isArray(request.body) ? (request.body as any[]) : [];
+      if (!rows.length) return reply.send({ inserted: 0, updated: 0, skipped: 0 });
 
-    if (!body.leads || body.leads.length === 0) {
-      return reply.status(400).send({ error: 'No leads provided' });
+      const now = new Date().toISOString();
+      const payload = rows.map((r) => ({
+        source: r.source,
+        kind: r.kind ?? 'permit',
+        raw_address: r.rawAddress,
+        street: r.street,
+        city: r.city,
+        state: r.state ?? 'NJ',
+        zip: r.zip,
+        county: r.county ?? null,
+        town: r.town ?? null,
+        permit_number: r.permitNumber ?? null,
+        permit_type: r.permitType ?? null,
+        status: r.status ?? null,
+        issue_date: r.issueDate ?? null,
+        owner_name: r.ownerName ?? null,
+        contractor_name: r.contractorName ?? null,
+        score: typeof r.score === 'number' ? r.score : 0,
+        canonical_key: r.canonicalKey,
+        first_seen: r.firstSeen ?? now,
+        last_seen: r.lastSeen ?? now,
+        lat: r.lat ?? null,
+        lon: r.lon ?? null
+      }));
+
+      const { data, error } = await supabaseAdmin
+        .from('leads')
+        .upsert(payload, { onConflict: 'canonical_key' })
+        .select('id, canonical_key');
+
+      if (error) {
+        return reply.code(500).send({ error: error.message });
+      }
+
+      return reply.send({ upserted: data?.length ?? 0 });
+    } catch (e: any) {
+      return reply.code(500).send({ error: e.message ?? 'server error' });
     }
-
-    const { data, error } = await supabase
-      .from('leads')
-      .insert(body.leads)
-      .select();
-
-    if (error) {
-      return reply.status(500).send({ error: error.message });
-    }
-
-    reply.send({ inserted: data?.length || 0 });
   });
 
   app.get('/api/export', async (request, reply) => {

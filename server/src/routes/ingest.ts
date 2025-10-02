@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify';
 import { z } from 'zod';
-import { supabase } from '../db/connection.js';
+import { supabaseAdmin } from '../db/connection.js';
 import { calculateScore } from '../scoring.js';
 import { normalizeAddress, createCanonicalKey } from '../utils/normalize.js';
 
@@ -42,7 +42,7 @@ export async function ingestRoutes(fastify: FastifyInstance) {
         status: item.status,
       });
 
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('leads')
         .upsert(
           {
@@ -127,7 +127,7 @@ export async function ingestRoutes(fastify: FastifyInstance) {
         status: item.status,
       });
 
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('leads')
         .upsert(
           {
