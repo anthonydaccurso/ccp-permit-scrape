@@ -20,7 +20,7 @@ export const handler: Handler = async (event) => {
     }
 
     const token = event.headers["x-admin-token"]
-    if (!token || token.trim() !== (process.env.ADMIN_TOKEN || "")) {
+    if (!token || token.trim() !== (process.env.ADMIN_TOKEN_NEW || "")) {
       return resp(401, { error: "unauthorized" })
     }
 
