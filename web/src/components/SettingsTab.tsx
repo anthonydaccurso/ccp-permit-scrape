@@ -46,6 +46,14 @@ export function SettingsTab() {
                 <code className="text-xs text-gray-600 block">POST /api/ingest/firecrawl</code>
               </div>
               <div className="p-3 bg-gray-50 rounded-lg">
+                <div className="font-medium text-sm text-gray-900 mb-1">Supabase Ingestion</div>
+                <code className="text-xs text-gray-600 block">POST /api/ingest/Supabase</code>
+              </div>
+              <div className="p-3 bg-gray-50 rounded-lg">
+                <div className="font-medium text-sm text-gray-900 mb-1">GitHub Ingestion</div>
+                <code className="text-xs text-gray-600 block">POST /api/ingest/GitHub</code>
+              </div>
+              <div className="p-3 bg-gray-50 rounded-lg">
                 <div className="font-medium text-sm text-gray-900 mb-1">n8n Ingestion</div>
                 <code className="text-xs text-gray-600 block">POST /api/ingest/n8n</code>
               </div>
