@@ -20,8 +20,9 @@
     "crawl": "tsx --tsconfig tsconfig.crawl.json scripts/crawl-and-ingest.ts"
   },
   "dependencies": {
+    "@fastify/aws-lambda": "^6.1.1",
     "node-fetch": "^3.3.2",
-    "@fastify/aws-lambda": "^6.1.1"
+    "serverless-http": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
