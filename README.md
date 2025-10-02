@@ -42,7 +42,7 @@ Copy `.env.example` to `.env` and update with your database credentials:
 
 ```
 DATABASE_URL=postgresql://user:password@host:5432/database
-ADMIN_TOKEN=your-secure-admin-token
+ADMIN_TOKEN_NEW=your-secure-admin-token
 PORT=3001
 ```
 
