@@ -2,15 +2,13 @@ import 'dotenv/config';
 import serverless from 'serverless-http';
 import { buildApp } from '../../server/dist/buildApp.js';
 
-let handler: any;
+let cachedHandler: any;
 
-export const handlerBase = async (event: any, context: any) => {
-  if (!handler) {
+export const handler = async (event: any, context: any) => {
+  if (!cachedHandler) {
     const app = await buildApp();
     await app.ready();
-    handler = serverless(app.server);
+    cachedHandler = serverless(app.server);
   }
-  return handler(event, context);
+  return cachedHandler(event, context);
 };
-
-export const handler = handlerBase;

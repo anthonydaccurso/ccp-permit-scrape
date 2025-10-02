@@ -21,8 +21,14 @@
   },
   "dependencies": {
     "@fastify/aws-lambda": "^6.1.1",
+    "@fastify/cors": "^9.0.1",
+    "@supabase/supabase-js": "^2.58.0",
+    "dotenv": "^17.2.3",
+    "fastify": "^4.26.1",
     "node-fetch": "^3.3.2",
-    "serverless-http": "^4.0.0"
+    "pg": "^8.11.3",
+    "serverless-http": "^4.0.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

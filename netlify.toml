@@ -5,6 +5,7 @@
 
 [functions]
   node_bundler = "esbuild"
+  external_node_modules = ["fastify", "@fastify/cors", "@supabase/supabase-js"]
   included_files = ["server/dist/**"]
 
 [[redirects]]
