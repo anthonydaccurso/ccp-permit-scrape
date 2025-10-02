@@ -1,0 +1,34 @@
+name: Crawl & Ingest
+
+on:
+  schedule:
+    - cron: '0 11 * * *' # 11:00 UTC = 7:00 AM ET
+  workflow_dispatch:      # allows manual run from GitHub UI
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies (skip scripts)
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --ignore-scripts
+          else
+            npm install --ignore-scripts
+          fi
+
+      - name: Run crawl script
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          APP_BASE_URL: ${{ secrets.APP_BASE_URL }}
+          ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
+          NOMINATIM_UA: ${{ secrets.NOMINATIM_UA }}
+        run: npm run crawl
