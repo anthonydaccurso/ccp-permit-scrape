@@ -1,0 +1,31 @@
+{
+  "name": "cpp-permit-lookup",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev": "npm run dev:server & npm run dev:web",
+    "dev:server": "cd server && npm run dev",
+    "dev:web": "cd web && npm run dev",
+    "build": "npm run build:server && npm run build:web",
+    "build:server": "cd server && npm run build",
+    "build:web": "cd web && npm run build",
+    "db:migrate": "cd server && npm run db:migrate",
+    "db:seed": "cd server && npm run db:seed",
+    "install:all": "npm install && cd server && npm install && cd ../web && npm install",
+    "crawl": "tsx --tsconfig tsconfig.crawl.json scripts/crawl-and-ingest.ts"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "@fastify/aws-lambda": "^6.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
