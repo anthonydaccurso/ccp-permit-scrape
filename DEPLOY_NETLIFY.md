@@ -26,7 +26,7 @@ After connecting your repository to Netlify, go to **Site settings → Environme
 VITE_SUPABASE_URL=https://your-project.supabase.co
 VITE_SUPABASE_ANON_KEY=your-anon-key
 DATABASE_URL=postgresql://postgres.[project-ref]:[password]@aws-0-us-east-1.pooler.supabase.com:6543/postgres
-ADMIN_TOKEN=your-secure-admin-token-here
+ADMIN_TOKEN_NEW=your-secure-admin-token-here
 ```
 
 ### For Crawling (Optional)
