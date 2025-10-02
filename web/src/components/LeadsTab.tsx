@@ -164,9 +164,9 @@ export function LeadsTab() {
 
           <button
             onClick={runAll}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-medium"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
           >
-            Run Full Update (Sources → Areas → Crawl)
+            Run Database Update
           </button>
 
           <button
