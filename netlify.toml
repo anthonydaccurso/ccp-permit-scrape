@@ -8,9 +8,6 @@
   external_node_modules = ["fastify", "@fastify/cors", "@supabase/supabase-js", "pg", "zod", "serverless-http"]
   included_files = ["server/dist/**"]
 
-[[functions]]
-  directory = "netlify/functions"
-
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/server"
