@@ -100,7 +100,7 @@ export function SourcesTab() {
                     onClick={() => toggleActive(source.id, source.active)}
                     className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap ${
                       source.active
-                        ? 'bg-gray-900 text-white hover:bg-black'
+                        ? 'bg-gray-800 text-white hover:bg-gray-900'
                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                     }`}
                   >
