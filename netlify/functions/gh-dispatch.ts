@@ -1,4 +1,4 @@
-// netlify/functions/gh-dispatch-all.ts
+// netlify/functions/gh-dispatch.ts
 import type { Handler } from "@netlify/functions"
 
 const WORKFLOWS = ["seed-sources.yml", "seed-areas.yml", "crawl.yml"]
