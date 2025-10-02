@@ -1,12 +1,12 @@
 import 'dotenv/config';
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
-import { leadsRoutes } from '../../server/src/routes/leads.js';
-import { areasRoutes } from '../../server/src/routes/areas.js';
-import { sourcesRoutes } from '../../server/src/routes/sources.js';
-import { ingestRoutes } from '../../server/src/routes/ingest.js';
-import { exportRoutes } from '../../server/src/routes/export.js';
-import { registerWebhookRoutes } from '../../server/src/routes/webhook.js';
+import { leadsRoutes } from '../../server/dist/routes/leads.js';
+import { areasRoutes } from '../../server/dist/routes/areas.js';
+import { sourcesRoutes } from '../../server/dist/routes/sources.js';
+import { ingestRoutes } from '../../server/dist/routes/ingest.js';
+import { exportRoutes } from '../../server/dist/routes/export.js';
+import { registerWebhookRoutes } from '../../server/dist/routes/webhook.js';
 import serverless from '@fastify/aws-lambda';
 
 const fastify = Fastify({
