@@ -236,7 +236,7 @@ Automated daily crawling using FireCrawl + GitHub Actions to fetch permit data f
    ```bash
    # Set environment variables in your .env file
    APP_BASE_URL=http://localhost:3001
-   ADMIN_TOKEN=your-admin-token
+   ADMIN_TOKEN_NEW=your-admin-token
    FIRECRAWL_API_KEY=fc_live_your_key
    NOMINATIM_UA=CustomPoolPros/1.0 (contact@custompoolpros.com)
 
