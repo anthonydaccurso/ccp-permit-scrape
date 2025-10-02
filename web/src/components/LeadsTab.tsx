@@ -88,8 +88,9 @@ export function LeadsTab() {
           'Content-Type': 'application/json',
           'x-admin-token': 'secure-admin-token-12345',
         },
+        body: JSON.stringify({}),
       });
-      const j = await res.json();
+      const j = await res.json().catch(() => ({}));
       console.log(j);
       alert(JSON.stringify(j, null, 2));
     } catch (error) {
