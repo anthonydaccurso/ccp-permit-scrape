@@ -42,7 +42,7 @@ async function upsertArea(area: { county: string; town: string }): Promise<void>
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-admin-token': ADMIN_TOKEN,
+        'x-admin-token': ADMIN_TOKEN_NEW,
       },
       body: JSON.stringify(area),
     });
