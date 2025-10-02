@@ -1,7 +1,9 @@
-import { Key } from 'lucide-react';
+import { useState } from 'react';
+import { Key, Eye, EyeOff } from 'lucide-react';
 
 export function SettingsTab() {
   const adminToken = 'secure-admin-token-12345';
+  const [showToken, setShowToken] = useState(false);
 
   return (
     <div className="space-y-6">
@@ -15,7 +17,20 @@ export function SettingsTab() {
             </label>
             <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
               <Key className="w-4 h-4 text-gray-400" />
-              <code className="flex-1 text-sm font-mono text-gray-900">{adminToken}</code>
+              <code className={`flex-1 text-sm font-mono text-gray-900 ${!showToken ? 'blur-sm select-none' : ''}`}>
+                {adminToken}
+              </code>
+              <button
+                onClick={() => setShowToken(!showToken)}
+                className="p-1 hover:bg-gray-200 rounded transition-colors"
+                aria-label={showToken ? 'Hide token' : 'Show token'}
+              >
+                {showToken ? (
+                  <EyeOff className="w-4 h-4 text-gray-600" />
+                ) : (
+                  <Eye className="w-4 h-4 text-gray-600" />
+                )}
+              </button>
             </div>
             <p className="mt-2 text-sm text-gray-600">
               Use this token in the <code className="px-1 py-0.5 bg-gray-100 rounded text-xs">x-admin-token</code> header

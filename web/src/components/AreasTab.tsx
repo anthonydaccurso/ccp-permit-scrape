@@ -44,7 +44,7 @@ export function AreasTab() {
           </div>
           <div>
             <h2 className="text-xl font-bold text-gray-900">Service Counties</h2>
-            <p className="text-sm text-gray-600">Manage county coverage areas</p>
+            <p className="text-sm text-gray-600">{counties.length} counties covered</p>
           </div>
         </div>
         {loading ? (
@@ -85,7 +85,7 @@ export function AreasTab() {
           </div>
           <div>
             <h2 className="text-xl font-bold text-gray-900">Service Towns</h2>
-            <p className="text-sm text-gray-600">Manage town coverage areas</p>
+            <p className="text-sm text-gray-600">{towns.length} towns covered</p>
           </div>
         </div>
         {loading ? (
