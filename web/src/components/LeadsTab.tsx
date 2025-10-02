@@ -86,7 +86,7 @@ export function LeadsTab() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-admin-token': 'secure-admin-token-12345',
+          'x-admin-token': 'custom-pool-pros-marketing-953',
         },
         body: JSON.stringify({}),
       });
