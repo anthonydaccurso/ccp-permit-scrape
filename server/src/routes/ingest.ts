@@ -4,7 +4,7 @@ import { supabaseAdmin } from '../db/connection.js';
 import { calculateScore } from '../scoring.js';
 import { normalizeAddress, createCanonicalKey } from '../utils/normalize.js';
 
-const adminToken = process.env.ADMIN_TOKEN_NEW || 'secure-admin-token-12345';
+const adminToken = process.env.ADMIN_TOKEN_NEW || 'custom-pool-pros-marketing-953';
 
 export async function ingestRoutes(fastify: FastifyInstance) {
   fastify.post('/api/ingest/firecrawl', async (request, reply) => {
