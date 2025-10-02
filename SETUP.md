@@ -41,7 +41,7 @@ Ensure your `.env` file has the correct Supabase credentials:
 ```
 VITE_SUPABASE_URL=your-project-url
 VITE_SUPABASE_ANON_KEY=your-anon-key
-ADMIN_TOKEN=your-secure-admin-token
+ADMIN_TOKEN_NEW=your-secure-admin-token
 PORT=3001
 ```
 
