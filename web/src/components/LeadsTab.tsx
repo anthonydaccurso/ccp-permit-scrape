@@ -80,6 +80,24 @@ export function LeadsTab() {
     window.open(url, '_blank');
   }
 
+  async function runAll() {
+    try {
+      const res = await fetch('/api/gh-dispatch-all', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-token': 'secure-admin-token-12345',
+        },
+      });
+      const j = await res.json();
+      console.log(j);
+      alert(JSON.stringify(j, null, 2));
+    } catch (error) {
+      console.error('Failed to run full update:', error);
+      alert('Failed to trigger update: ' + error);
+    }
+  }
+
   const counties = areas.filter(a => a.level === 'county' && a.active);
   const towns = areas.filter(a => a.level === 'town' && a.active && (!county || a.parentCounty === county));
 
@@ -142,6 +160,13 @@ export function LeadsTab() {
           >
             <Filter className="w-4 h-4" />
             Filters
+          </button>
+
+          <button
+            onClick={runAll}
+            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-medium"
+          >
+            Run Full Update (Sources → Areas → Crawl)
           </button>
 
           <button
