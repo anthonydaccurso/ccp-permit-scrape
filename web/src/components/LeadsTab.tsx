@@ -82,7 +82,7 @@ export function LeadsTab() {
 
   async function runAll() {
     try {
-      const res = await fetch('/api/gh-dispatch-all', {
+      const res = await fetch('/api/gh-dispatch', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
