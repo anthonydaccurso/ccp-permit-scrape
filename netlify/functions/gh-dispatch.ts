@@ -7,8 +7,8 @@ export const handler: Handler = async (event) => {
     if (event.httpMethod === "OPTIONS") return resp(204, "", cors())
     if (event.httpMethod !== "POST")   return resp(405, { error: "method_not_allowed", allow: "POST" }, cors())
 
-    const admin = event.headers["x-admin-token"]
-    if (!admin || admin.trim() !== (process.env.ADMIN_TOKEN || "")) {
+    const admin = event.headers["x-admin-token-new"]
+    if (!admin || admin.trim() !== (process.env.ADMIN_TOKEN_NEW || "")) {
       return resp(401, { error: "unauthorized" }, cors())
     }
 
