@@ -86,7 +86,7 @@ export function LeadsTab() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-admin-token': '__SET_IN_NETLIFY__',
+          'x-admin-token-new': '__SET_IN_NETLIFY__',
         },
         body: JSON.stringify({}),
       });
