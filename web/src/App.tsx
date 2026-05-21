@@ -29,7 +29,7 @@ function App() {
                 <img
                   src="https://bvevrurqtidadhfsuoee.supabase.co/storage/v1/object/public/media/ddm-apple-touch-icon-1080x1080.png"
                   alt="Daccurso Digital Marketing"
-                  className="h-10 w-auto object-contain"
+                  className="h-24 w-auto object-contain"
                 />
               </div>
               <div className="border-l-2 border-gray-300 pl-4">
