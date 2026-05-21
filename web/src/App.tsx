@@ -28,7 +28,7 @@ function App() {
               <div className="relative">
                 <img
                   src="/custom-pool-pros-logo.webp"
-                  alt="Custom Pool Pros"
+                  alt="Daccurso Digital Marketing"
                   className="h-16 w-auto object-contain"
                 />
               </div>
