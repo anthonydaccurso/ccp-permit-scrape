@@ -40,7 +40,7 @@ function App() {
             <div className="hidden md:flex items-center gap-3 text-sm">
               <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-lg">
                 <Waves className="w-4 h-4 text-blue-600" />
-                <span className="text-blue-900 font-medium">Construction Permit Intelligence</span>
+                <span className="text-blue-900 font-medium">Pool Construction Intelligence</span>
               </div>
             </div>
           </div>
