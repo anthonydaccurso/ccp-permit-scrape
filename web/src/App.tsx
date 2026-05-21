@@ -33,14 +33,14 @@ function App() {
                 />
               </div>
               <div className="border-l-2 border-gray-300 pl-4">
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Custom Pool Pros</h1>
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Daccurso Digital Marketing</h1>
                 <p className="text-sm text-gray-600 font-medium">Permit Lookup & Lead Intelligence</p>
               </div>
             </div>
             <div className="hidden md:flex items-center gap-3 text-sm">
               <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-lg">
                 <Waves className="w-4 h-4 text-blue-600" />
-                <span className="text-blue-900 font-medium">Pool Construction Intelligence</span>
+                <span className="text-blue-900 font-medium">Construction Permit Intelligence</span>
               </div>
             </div>
           </div>
