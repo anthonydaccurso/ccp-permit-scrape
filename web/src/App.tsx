@@ -27,7 +27,7 @@ function App() {
             <div className="flex items-center gap-4">
               <div className="relative">
                 <img
-                  src="/custom-pool-pros-logo.webp"
+                  src="https://bvevrurqtidadhfsuoee.supabase.co/storage/v1/object/public/media/ddm-apple-touch-icon.png"
                   alt="Daccurso Digital Marketing"
                   className="h-16 w-auto object-contain"
                 />
